@@ -3,14 +3,91 @@
     <html lang="az">
     <head>
         <meta charset="UTF-8">
-        <title>Portinello Sistemi</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Portinello Store</title>
+        <style>
+            * { box-sizing: border-box; }
+            body { font-family: 'Segoe UI', sans-serif; background-color: #0a0a0a; color: #fff; margin: 0; }
+            
+            header { background: #000; padding: 40px 20px; text-align: center; border-bottom: 2px solid #0f0; }
+            header h1 { color: #0f0; margin: 0; font-size: 35px; letter-spacing: 5px; text-transform: uppercase; }
+            header p { color: #888; margin-top: 10px; }
+
+            .container { max-width: 1200px; margin: 50px auto; padding: 20px; }
+            
+            .product-grid { 
+                display: grid; 
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+                gap: 30px; 
+            }
+
+            .card { 
+                background: #151515; border: 1px solid #333; border-radius: 15px; 
+                overflow: hidden; transition: 0.4s; position: relative;
+            }
+            .card:hover { border-color: #0f0; transform: translateY(-10px); box-shadow: 0 0 20px rgba(0,255,0,0.2); }
+
+            .card img { width: 100%; height: 300px; object-fit: cover; filter: grayscale(30%); transition: 0.5s; }
+            .card:hover img { filter: grayscale(0%); }
+            
+            .card-info { padding: 25px; text-align: center; }
+            .card-info h3 { margin: 0 0 10px 0; font-size: 22px; }
+            .card-info .price { font-size: 24px; color: #0f0; font-weight: bold; margin-bottom: 20px; }
+            
+            .buy-btn { 
+                display: block; background: #0f0; color: #000; padding: 12px; 
+                text-decoration: none; border-radius: 8px; font-weight: bold; 
+                transition: 0.3s; text-transform: uppercase;
+            }
+            .buy-btn:hover { background: #fff; box-shadow: 0 0 15px #fff; }
+
+            footer { text-align: center; padding: 50px; color: #444; border-top: 1px solid #222; margin-top: 50px; }
+        </style>
     </head>
-    <body style="background:#000; color:#0f0; text-align:center; padding-top:100px; font-family:sans-serif;">
-        <h1 style="font-size: 50px;">PORTINELLO SİSTEMİ AKTİVDİR</h1>
-        <p style="font-size: 20px;">Xoş gəldiniz, Elvin Abdullayev!</p>
-        <div style="border: 1px solid #0f0; display: inline-block; padding: 20px; margin-top: 30px;">
-            <code> > Connection: Secure<br> > Host: portinello.github.io<br> > Status: Running...</code>
+    <body>
+
+    <header>
+        <h1>Portinello Digital Store</h1>
+        <p>Admin: Elvin Abdullayev | Keyfiyyətli Məhsulların Ünvanı</p>
+    </header>
+
+    <div class="container">
+        <div class="product-grid">
+            
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500" alt="Məhsul 1">
+                <div class="card-info">
+                    <h3>Nike Air Max Special</h3>
+                    <div class="price">145.00 AZN</div>
+                    <a href="https://wa.me/994XXXXXXXXX" class="buy-btn">WhatsApp İlə Sifariş</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500" alt="Məhsul 2">
+                <div class="card-info">
+                    <h3>Pro Headphone Z1</h3>
+                    <div class="price">95.00 AZN</div>
+                    <a href="https://wa.me/994XXXXXXXXX" class="buy-btn">WhatsApp İlə Sifariş</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500" alt="Məhsul 3">
+                <div class="card-info">
+                    <h3>Smart Watch Edition</h3>
+                    <div class="price">110.00 AZN</div>
+                    <a href="https://wa.me/994XXXXXXXXX" class="buy-btn">WhatsApp İlə Sifariş</a>
+                </div>
+            </div>
+
         </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Portinello. Professional E-ticarət Sistemi.
+    </footer>
+
     </body>
     </html>
     
