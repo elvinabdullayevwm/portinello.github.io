@@ -3,210 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portinello Luxury Store - Premium Parfüm, Kosmetika və Zərgərlik">
     <title>Portinello Luxury | Premium Collection</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root {
-            --gold: #d4af37;
-            --black: #0a0a0a;
-            --white: #ffffff;
-            --gray: #f4f4f4;
-            --dark-gray: #333;
-        }
+        :root { --gold: #d4af37; --black: #0a0a0a; --white: #ffffff; --gray: #f4f4f4; }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
+        body { background-color: var(--white); color: var(--black); }
+        
+        header { background: var(--black); color: var(--gold); padding: 1.5rem 0; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--gold); }
+        .container { width: 90%; max-width: 1200px; margin: auto; }
+        nav { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        .logo { font-size: 2rem; font-weight: bold; letter-spacing: 3px; text-transform: uppercase; }
+        
+        .categories-nav { display: flex; gap: 15px; margin-top: 15px; overflow-x: auto; padding-bottom: 5px; }
+        .categories-nav button { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 10px 25px; cursor: pointer; border-radius: 25px; transition: 0.3s; white-space: nowrap; font-weight: bold; }
+        .categories-nav button.active, .categories-nav button:hover { background: var(--gold); color: var(--black); }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        .hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1583467875263-d50dec37a88c?q=80&w=1200'); background-size: cover; background-position: center; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--white); }
+        .hero h1 { font-size: 3rem; letter-spacing: 5px; margin-bottom: 10px; }
 
-        body {
-            background-color: var(--white);
-            color: var(--black);
-            line-height: 1.6;
-        }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; padding: 50px 0; }
+        .product-card { background: var(--white); border: 1px solid #eee; border-radius: 12px; overflow: hidden; transition: 0.4s; display: flex; flex-direction: column; }
+        .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        
+        .product-image { width: 100%; height: 300px; background-size: cover; background-position: center; }
+        .product-info { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; text-align: center; }
+        .product-info h3 { font-size: 1.2rem; margin-bottom: 8px; color: var(--black); text-transform: uppercase; min-height: 50px; }
+        .product-desc { font-size: 0.9rem; color: #666; margin-bottom: 15px; line-height: 1.4; }
+        .price { color: var(--gold); font-weight: bold; font-size: 1.4rem; margin-bottom: 20px; display: block; }
+        
+        .btn-buy { background: var(--black); color: var(--gold); text-decoration: none; padding: 12px; border-radius: 8px; font-weight: bold; transition: 0.3s; border: 1px solid var(--black); }
+        .btn-buy:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
 
-        /* Header & Navigation */
-        header {
-            background: var(--black);
-            color: var(--gold);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid var(--gold);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-        }
-
-        .categories-nav {
-            display: flex;
-            gap: 20px;
-            overflow-x: auto;
-            padding: 10px 0;
-        }
-
-        .categories-nav button {
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            padding: 8px 20px;
-            cursor: pointer;
-            border-radius: 20px;
-            transition: 0.3s;
-            white-space: nowrap;
-        }
-
-        .categories-nav button:hover, .categories-nav button.active {
-            background: var(--gold);
-            color: var(--black);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 40vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--white);
-        }
-
-        /* Products Grid */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-            padding: 40px 0;
-        }
-
-        .product-card {
-            background: var(--white);
-            border: 1px solid var(--gray);
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
-        }
-
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 250px;
-            background-color: var(--gray);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            color: var(--gold);
-        }
-
-        .product-info {
-            padding: 15px;
-            text-align: center;
-        }
-
-        .product-info h3 {
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-        }
-
-        .price {
-            color: var(--gold);
-            font-weight: bold;
-            font-size: 1.2rem;
-            display: block;
-            margin-bottom: 15px;
-        }
-
-        .btn-buy {
-            display: inline-block;
-            background: var(--black);
-            color: var(--gold);
-            text-decoration: none;
-            padding: 10px 25px;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: 0.3s;
-            width: 100%;
-        }
-
-        .btn-buy:hover {
-            background: var(--gold);
-            color: var(--black);
-        }
-
-        /* Footer */
-        footer {
-            background: var(--black);
-            color: var(--gray);
-            padding: 40px 0;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .social-links {
-            margin-bottom: 20px;
-        }
-
-        .social-links a {
-            color: var(--gold);
-            font-size: 1.5rem;
-            margin: 0 15px;
-            text-decoration: none;
-        }
-
-        /* Floating WhatsApp */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
-            z-index: 1000;
-            text-decoration: none;
-        }
+        footer { background: var(--black); color: var(--white); padding: 40px 0; text-align: center; margin-top: 50px; border-top: 3px solid var(--gold); }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); z-index: 2000; text-decoration: none; transition: 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1); }
 
         @media (max-width: 600px) {
-            .products-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-            .product-image { height: 150px; font-size: 2rem; }
-            .product-info h3 { font-size: 0.9rem; }
-            .logo { font-size: 1.2rem; }
+            .hero h1 { font-size: 2rem; }
+            .products-grid { grid-template-columns: 1fr; width: 95%; margin: auto; }
         }
     </style>
 </head>
@@ -216,16 +51,13 @@
     <div class="container">
         <nav>
             <div class="logo">PORTINELLO</div>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-instagram"></i></a>
+            <div class="categories-nav">
+                <button class="active" onclick="filterProducts('all')">Hamısı</button>
+                <button onclick="filterProducts('parfüm')">Parfüm</button>
+                <button onclick="filterProducts('kosmetika')">Kosmetika</button>
+                <button onclick="filterProducts('zərgərlik')">Zərgərlik</button>
             </div>
         </nav>
-        <div class="categories-nav" id="categoryMenu">
-            <button class="active" onclick="filterProducts('all')">Hamısı</button>
-            <button onclick="filterProducts('parfüm')">Parfüm</button>
-            <button onclick="filterProducts('kosmetika')">Kosmetika</button>
-            <button onclick="filterProducts('zərgərlik')">Zərgərlik</button>
-        </div>
     </div>
 </header>
 
@@ -235,14 +67,12 @@
 </section>
 
 <div class="container">
-    <div class="products-grid" id="productDisplay">
-        </div>
+    <div class="products-grid" id="productDisplay"></div>
 </div>
 
 <footer>
     <div class="container">
-        <p>&copy; 2026 Portinello Luxury Store. Bütün hüquqlar qorunur.</p>
-        <p>Bakı, Azərbaycan</p>
+        <p>&copy; 2026 Portinello Luxury Store. Bakı, Azərbaycan</p>
     </div>
 </footer>
 
@@ -251,72 +81,77 @@
 </a>
 
 <script>
-    // Məhsul siyahısı - Hər məhsulu bura özəl məlumatları ilə əlavə et
     const products = [
+        // PARFÜMLƏR
         {
-            id: 1,
-            name: "Chanel No.5 Eau de Parfum",
-            category: "parfüm",
-            price: "285.00",
-            description: "Tərkibi: May qızılgülü, Yasəmən və Aldehidlər. Üstünlüyü: Dünyanın ən məşhur, klassik və qalıcı ətri.",
-            image: "https://www.chanel.com/images/t_one///f_auto,q_auto,dpr_2.0/e_brightness:-5/n5-eau-de-parfum-spray-3-4fl-oz--packshot-default-120550-9517135003678.jpg"
+            id: 1, name: "Chanel No.5", category: "parfüm", price: "310",
+            desc: "Tərkibi: May qızılgülü, Yasəmən. Özəlliyi: Dünyanın ən çox satılan klassik ətri.",
+            img: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=500"
         },
         {
-            id: 2,
-            name: "Dior Sauvage",
-            category: "parfüm",
-            price: "240.00",
-            description: "Tərkibi: Kalabriya berqamotu və Ambroksan. Üstünlüyü: Güclü, təravətli və xarizmatik kişi ətri.",
-            image: "https://www.dior.com/dw/image/v2/BGHB_PRD/on/demandware.static/-/Sites-master_catalog/default/dw69b05727/assets/Y0996000/Y0996000_E01.jpg"
+            id: 2, name: "Dior Sauvage", category: "parfüm", price: "245",
+            desc: "Tərkibi: Berqamot, Ambroksan. Özəlliyi: Güclü və xarizmatik kişi ətri.",
+            img: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500"
         },
         {
-            id: 3,
-            name: "Lüks Qızıl Üzük",
-            category: "zərgərlik",
-            price: "1150.00",
-            description: "Tərkibi: 750 əyar (18K) qızıl. Üstünlüyü: Zərif əl işi, gündəlik və özəl günlər üçün ideal dizayn.",
-            image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500"
+            id: 3, name: "Tom Ford Black Orchid", category: "parfüm", price: "290",
+            desc: "Tərkibi: Qara orkideya, ədviyyat. Özəlliyi: Sirli, dərin və uniseks ətir.",
+            img: "https://images.unsplash.com/photo-1557170334-a9632e77c6e4?w=500"
+        },
+        {
+            id: 4, name: "Yves Saint Laurent Libre", category: "parfüm", price: "220",
+            desc: "Tərkibi: Lavanda, portağal çiçəyi. Özəlliyi: Azadlıq simvolu olan müasir qadın ətri.",
+            img: "https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?w=500"
+        },
+        {
+            id: 5, name: "Creed Aventus", category: "parfüm", price: "550",
+            desc: "Tərkibi: Ananas, ağcaqayın. Özəlliyi: Krallara layiq, olduqca qalıcı və nüfuzlu.",
+            img: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500"
+        },
+        {
+            id: 6, name: "Giorgio Armani Si", category: "parfüm", price: "200",
+            desc: "Tərkibi: Qara qarağat, nəcib ağaclar. Özəlliyi: Zərif və özünəinamlı qadınlar üçün.",
+            img: "https://images.unsplash.com/photo-1590736704728-f4730bb30770?w=500"
+        },
+
+        // KOSMETİKA
+        {
+            id: 21, name: "Estée Lauder Advanced Night Repair", category: "kosmetika", price: "185",
+            desc: "Tərkibi: Hialuron turşusu. Özəlliyi: Dərini gecə boyu bərpa edən dünyanın 1 nömrəli serumu.",
+            img: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500"
+        },
+        {
+            id: 22, name: "Lancôme Hypnôse Mascara", category: "kosmetika", price: "75",
+            desc: "Tərkibi: Provitamin B5. Özəlliyi: Kirpiklərə 6 qat daha çox həcm verir.",
+            img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=500"
+        },
+        {
+            id: 23, name: "MAC Matte Lipstick", category: "kosmetika", price: "45",
+            desc: "Rəng: Ruby Woo. Özəlliyi: Tam mat, uzunmüddətli və dodağı qurutmayan formula.",
+            img: "https://images.unsplash.com/photo-1586776977607-310e9c725c37?w=500"
+        },
+        {
+            id: 24, name: "Charlotte Tilbury Magic Cream", category: "kosmetika", price: "160",
+            desc: "Tərkibi: Peptidlər, Vitamin C. Özəlliyi: Makiyajdan öncə dərini mükəmməl parlaq edir.",
+            img: "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=500"
+        },
+        {
+            id: 25, name: "NARS Radiant Creamy Concealer", category: "kosmetika", price: "68",
+            desc: "Özəlliyi: Göz altı qaraları gizlədir, dərini təbii və parlaq göstərir.",
+            img: "https://images.unsplash.com/photo-1617422275558-e5f616302690?w=500"
         }
-        // Buradan aşağıya eyni qayda ilə yeni məhsullar əlavə edə bilərsən
-    ];
-        {
-            id: 1,
-            name: "Chanel No.5 Eau de Parfum",
-            category: "parfüm",
-            price: "285.00",
-            description: "Tərkibi: May qızılgülü, Yasəmən və Aldehidlər. Üstünlüyü: Klassik və qalıcı ətir.",
-            image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=500"
-        },
-        {
-            id: 2,
-            name: "Dior Sauvage",
-            category: "parfüm",
-            price: "240.00",
-            description: "Tərkibi: Kalabriya berqamotu, Ambroksan. Üstünlüyü: Güclü və təravətli kişi ətri.",
-            image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500"
-        },
-        {
-            id: 3,
-            name: "Lüks Qızıl Üzük 18K",
-            category: "zərgərlik",
-            price: "1250.00",
-            description: "Tərkibi: 750 əyar qızıl, kiçik brilyant qaşlar. Üstünlüyü: Əl işi və zərif dizayn.",
-            image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500"
-        }
-        // Yeni məhsulları bura vergül qoyaraq eyni formatda əlavə edə bilərsən
     ];
 
-    function displayProducts(filteredProducts) {
+    function displayProducts(list) {
         const display = document.getElementById('productDisplay');
-        display.innerHTML = filteredProducts.map(p => `
+        display.innerHTML = list.map(p => `
             <div class="product-card">
-                <div class="product-image" style="background-image: url('${p.image}'); background-size: cover; background-position: center; height: 250px;">
-                </div>
+                <div class="product-image" style="background-image: url('${p.img}')"></div>
                 <div class="product-info">
                     <h3>${p.name}</h3>
-                    <p style="font-size: 0.85rem; color: #666; margin-bottom: 10px;">${p.description}</p>
+                    <p class="product-desc">${p.desc}</p>
                     <span class="price">${p.price} AZN</span>
-                    <a href="https://wa.me/994997895969?text=Salam, *${p.name}* (${p.price} AZN) haqqında məlumat almaq və sifariş etmək istəyirəm." class="btn-buy" target="_blank">Sifariş Et</a>
+                    <a href="https://wa.me/994997895969?text=Salam, *${p.name}* (${p.price} AZN) haqqında məlumat almaq istəyirəm." class="btn-buy" target="_blank">Sifariş Et</a>
                 </div>
             </div>
         `).join('');
@@ -324,21 +159,18 @@
 
     function filterProducts(cat) {
         const buttons = document.querySelectorAll('.categories-nav button');
-        buttons.forEach(btn => btn.classList.remove('active'));
-        
-        if(cat === 'all') {
-            displayProducts(products);
-        } else {
-            const filtered = products.filter(p => p.category === cat);
-            displayProducts(filtered);
-        }
+        buttons.forEach(btn => {
+            btn.classList.remove('active');
+            if(btn.innerText.toLowerCase() === cat || (cat === 'all' && btn.innerText === 'Hamısı')) btn.classList.add('active');
+        });
+
+        if(cat === 'all') displayProducts(products);
+        else displayProducts(products.filter(p => p.category === cat));
     }
 
-   // Bu sətir funksiyanın bitdiyi yerdir (səndə 335-ci sətir)
-    } 
-
-    // Məhsulları ekrana çıxaran əsas əmr budur:
+    // İlk açılışda göstər
     displayProducts(products);
-
 </script>
 
+</body>
+</html>
