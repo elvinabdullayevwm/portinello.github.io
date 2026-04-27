@@ -251,39 +251,38 @@
 </a>
 
 <script>
-    // 90 Məhsulun verilənlər bazası (Strukturlaşdırılmış və Təhlükəsiz)
     const products = [];
     
-    // Parfüm (30 ədəd)
+    // Parfüm (30 ədəd) - Real Parfüm Şəkilləri
     for(let i=1; i<=30; i++) {
         products.push({
             id: i,
             name: `Premium Parfüm №${i}`,
             category: 'parfüm',
             price: (Math.random() * (300 - 80) + 80).toFixed(2),
-            icon: 'fa-wine-bottle'
+            image: `https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=400&q=80&sig=${i}`
         });
     }
 
-    // Kosmetika (30 ədəd)
+    // Kosmetika (30 ədəd) - Real Kosmetika Şəkilləri
     for(let i=31; i<=60; i++) {
         products.push({
             id: i,
             name: `Lüks Kosmetika №${i-30}`,
             category: 'kosmetika',
             price: (Math.random() * (150 - 40) + 40).toFixed(2),
-            icon: 'fa-sparkles'
+            image: `https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=400&q=80&sig=${i}`
         });
     }
 
-    // Zərgərlik (30 ədəd)
+    // Zərgərlik (30 ədəd) - Real Zərgərlik Şəkilləri
     for(let i=61; i<=90; i++) {
         products.push({
             id: i,
             name: `Qızıl/Gümüş №${i-60}`,
             category: 'zərgərlik',
             price: (Math.random() * (2000 - 200) + 200).toFixed(2),
-            icon: 'fa-gem'
+            image: `https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=400&q=80&sig=${i}`
         });
     }
 
@@ -291,8 +290,7 @@
         const display = document.getElementById('productDisplay');
         display.innerHTML = filteredProducts.map(p => `
             <div class="product-card">
-                <div class="product-image">
-                    <i class="fas ${p.icon}"></i>
+                <div class="product-image" style="background-image: url('${p.image}'); background-size: cover; background-position: center; height: 250px;">
                 </div>
                 <div class="product-info">
                     <h3>${p.name}</h3>
@@ -304,7 +302,6 @@
     }
 
     function filterProducts(cat) {
-        // Düymələrin rəngini dəyişmək
         const buttons = document.querySelectorAll('.categories-nav button');
         buttons.forEach(btn => {
             btn.classList.remove('active');
@@ -320,9 +317,5 @@
         }
     }
 
-    // İlk açılışda bütün məhsulları göstər
     displayProducts(products);
 </script>
-
-</body>
-</html>
