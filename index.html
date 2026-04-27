@@ -251,40 +251,34 @@
 </a>
 
 <script>
-    const products = [];
-    
-    // Parfüm (30 ədəd) - Real Parfüm Şəkilləri
-    for(let i=1; i<=30; i++) {
-        products.push({
-            id: i,
-            name: `Premium Parfüm №${i}`,
-            category: 'parfüm',
-            price: (Math.random() * (300 - 80) + 80).toFixed(2),
-            image: `https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=400&q=80&sig=${i}`
-        });
-    }
-
-    // Kosmetika (30 ədəd) - Real Kosmetika Şəkilləri
-    for(let i=31; i<=60; i++) {
-        products.push({
-            id: i,
-            name: `Lüks Kosmetika №${i-30}`,
-            category: 'kosmetika',
-            price: (Math.random() * (150 - 40) + 40).toFixed(2),
-            image: `https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&w=400&q=80&sig=${i}`
-        });
-    }
-
-    // Zərgərlik (30 ədəd) - Real Zərgərlik Şəkilləri
-    for(let i=61; i<=90; i++) {
-        products.push({
-            id: i,
-            name: `Qızıl/Gümüş №${i-60}`,
-            category: 'zərgərlik',
-            price: (Math.random() * (2000 - 200) + 200).toFixed(2),
-            image: `https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=400&q=80&sig=${i}`
-        });
-    }
+    // Məhsul siyahısı - Hər məhsulu bura özəl məlumatları ilə əlavə et
+    const products = [
+        {
+            id: 1,
+            name: "Chanel No.5 Eau de Parfum",
+            category: "parfüm",
+            price: "285.00",
+            description: "Tərkibi: May qızılgülü, Yasəmən və Aldehidlər. Üstünlüyü: Klassik və qalıcı ətir.",
+            image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=500"
+        },
+        {
+            id: 2,
+            name: "Dior Sauvage",
+            category: "parfüm",
+            price: "240.00",
+            description: "Tərkibi: Kalabriya berqamotu, Ambroksan. Üstünlüyü: Güclü və təravətli kişi ətri.",
+            image: "https://images.unsplash.com/photo-1523293182086-7651a899d37f?w=500"
+        },
+        {
+            id: 3,
+            name: "Lüks Qızıl Üzük 18K",
+            category: "zərgərlik",
+            price: "1250.00",
+            description: "Tərkibi: 750 əyar qızıl, kiçik brilyant qaşlar. Üstünlüyü: Əl işi və zərif dizayn.",
+            image: "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=500"
+        }
+        // Yeni məhsulları bura vergül qoyaraq eyni formatda əlavə edə bilərsən
+    ];
 
     function displayProducts(filteredProducts) {
         const display = document.getElementById('productDisplay');
@@ -294,8 +288,9 @@
                 </div>
                 <div class="product-info">
                     <h3>${p.name}</h3>
+                    <p style="font-size: 0.85rem; color: #666; margin-bottom: 10px;">${p.description}</p>
                     <span class="price">${p.price} AZN</span>
-                    <a href="https://wa.me/994997895969?text=Salam, ${p.name} haqqında məlumat almaq istəyirəm." class="btn-buy" target="_blank">Sifariş Et</a>
+                    <a href="https://wa.me/994997895969?text=Salam, *${p.name}* (${p.price} AZN) haqqında məlumat almaq və sifariş etmək istəyirəm." class="btn-buy" target="_blank">Sifariş Et</a>
                 </div>
             </div>
         `).join('');
@@ -303,12 +298,8 @@
 
     function filterProducts(cat) {
         const buttons = document.querySelectorAll('.categories-nav button');
-        buttons.forEach(btn => {
-            btn.classList.remove('active');
-            if(btn.innerText.toLowerCase() === cat) btn.classList.add('active');
-            if(cat === 'all' && btn.innerText === 'Hamısı') btn.classList.add('active');
-        });
-
+        buttons.forEach(btn => btn.classList.remove('active'));
+        
         if(cat === 'all') {
             displayProducts(products);
         } else {
